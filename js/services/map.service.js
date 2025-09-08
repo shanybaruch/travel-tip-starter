@@ -85,6 +85,7 @@ function getUserPosition() {
                 lat: res.coords.latitude,
                 lng: res.coords.longitude
             }
+            console.log('me position:',latLng)
             resolve(latLng)
         }
         navigator.geolocation.getCurrentPosition(onSuccess, reject)
