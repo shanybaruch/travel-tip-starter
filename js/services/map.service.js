@@ -8,11 +8,16 @@ export const mapService = {
     addClickListener
 }
 
+export const varsService = {
+    gUserPos,
+}
+
 // TODO: Enter your API Key
-const API_KEY = ''
+const API_KEY = 'AIzaSyCb8SqT_Fblc69QjKd9AFreObL-lV4jDOI'
 
 var gMap
 var gMarker
+var gUserPos
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     return _connectGoogleApi()
@@ -85,7 +90,8 @@ function getUserPosition() {
                 lat: res.coords.latitude,
                 lng: res.coords.longitude
             }
-            console.log('me position:',latLng)
+            gUserPos = latLng
+            console.log('user position:',gUserPos)
             resolve(latLng)
         }
         navigator.geolocation.getCurrentPosition(onSuccess, reject)

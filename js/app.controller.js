@@ -1,6 +1,7 @@
 import { utilService } from './services/util.service.js'
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
+import { varsService } from './services/map.service.js'
 
 window.onload = onInit
 
@@ -33,6 +34,8 @@ function onInit() {
 }
 
 function renderLocs(locs) {
+    console.log(locs)
+
     const selectedLocId = getLocIdFromQueryParams()
 
     var strHTML = locs.map(loc => {
@@ -43,12 +46,16 @@ function renderLocs(locs) {
                 <span>${loc.name}</span>
                 <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
             </h4>
-            <p class="muted">
+            <div class="more-details">
+                <p class="muted">
                 Created: ${utilService.elapsedTime(loc.createdAt)}
                 ${(loc.createdAt !== loc.updatedAt) ?
                 ` | Updated: ${utilService.elapsedTime(loc.updatedAt)}`
                 : ''}
-            </p>
+                </p>
+                <p class="loc-distance"> km
+                </p>
+            </div>
             <div class="loc-btns">     
                <button title="Delete" onclick="app.onRemoveLoc('${loc.id}')">🗑️</button>
                <button title="Edit" onclick="app.onUpdateLoc('${loc.id}')">✏️</button>
@@ -125,8 +132,10 @@ function loadAndRenderLocs() {
 }
 
 function onPanToUserPos() {
+    console.log(varsService.gUserPos)
     mapService.getUserPosition()
         .then(latLng => {
+            
             mapService.panTo({ ...latLng, zoom: 15 })
             unDisplayLoc()
             loadAndRenderLocs()
