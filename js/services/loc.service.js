@@ -55,7 +55,7 @@ function query() {
             } else if (gSortBy.name !== undefined) {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
             }
-
+            console.log(locs);
             return locs
         })
 }
@@ -119,7 +119,8 @@ function _createDemoLocs() {
                     address: "Ben Gurion Airport, 7015001, Israel",
                     lat: 32.0004465,
                     lng: 34.8706095,
-                    zoom: 12
+                    zoom: 12,
+                    dist: ''
                 },
             },
             {
@@ -129,7 +130,8 @@ function _createDemoLocs() {
                     address: "Derekh Mitsrayim 1, Eilat, 88000, Israel",
                     lat: 29.5393848,
                     lng: 34.9457792,
-                    zoom: 15
+                    zoom: 15,
+                    dist: ''
                 },
             },
             {
@@ -139,7 +141,8 @@ function _createDemoLocs() {
                     address: "Dahab, South Sinai, Egypt",
                     lat: 28.5096676,
                     lng: 34.5165187,
-                    zoom: 11
+                    zoom: 11,
+                    dist: ''
                 }
             }
         ]

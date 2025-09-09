@@ -8,16 +8,17 @@ export const mapService = {
     addClickListener
 }
 
-export const varsService = {
-    gUserPos,
-}
+// export var gUserPos
+// getUserPosition()
+//     .then(res => console.log(res))
+//     .then(res => Promise.resolve(res))
 
 // TODO: Enter your API Key
-const API_KEY = 'AIzaSyCb8SqT_Fblc69QjKd9AFreObL-lV4jDOI'
+const API_KEY = 'AIzaSyA1mNsIu2hEgzgnY9iagbZ3zwGWjdxIllY'
 
 var gMap
 var gMarker
-var gUserPos
+
 
 function initMap(lat = 32.0749831, lng = 34.9120554) {
     return _connectGoogleApi()
@@ -42,13 +43,15 @@ function lookupAddressGeo(geoOrAddress) {
     // const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452`
 
     var url = `https://maps.googleapis.com/maps/api/geocode/json?key=${API_KEY}&`
+    console.log(url);
+    
     url += (geoOrAddress.lat) ? `latlng=${geoOrAddress.lat},${geoOrAddress.lng}` :
         `address=${geoOrAddress}`
 
     return fetch(url)
         .then(res => res.json())
         .then(res => {
-            // console.log('RES IS', res)
+            console.log('RES IS', res)
             if (!res.results.length) return new Error('Found nothing')
             res = res.results[0]
             const { formatted_address, geometry } = res
@@ -68,6 +71,8 @@ function lookupAddressGeo(geoOrAddress) {
 function addClickListener(cb) {
     gMap.addListener('click', (mapsMouseEvent) => {
         const geo = { lat: mapsMouseEvent.latLng.lat(), lng: mapsMouseEvent.latLng.lng() }
+        console.log(geo);
+        
         lookupAddressGeo(geo).then(cb)
     })
 }
@@ -90,8 +95,7 @@ function getUserPosition() {
                 lat: res.coords.latitude,
                 lng: res.coords.longitude
             }
-            gUserPos = latLng
-            console.log('user position:',gUserPos)
+            // console.log('user position:',gUserPos)
             resolve(latLng)
         }
         navigator.geolocation.getCurrentPosition(onSuccess, reject)

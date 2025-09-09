@@ -1,7 +1,9 @@
 import { utilService } from './services/util.service.js'
 import { locService } from './services/loc.service.js'
 import { mapService } from './services/map.service.js'
-import { varsService } from './services/map.service.js'
+
+
+var gUserPos = null
 
 window.onload = onInit
 
@@ -40,6 +42,12 @@ function renderLocs(locs) {
 
     var strHTML = locs.map(loc => {
         const className = (loc.id === selectedLocId) ? 'active' : ''
+        var distanceHtml = ''
+        if (gUserPos) {
+            distanceHtml =
+                ` <p class="loc-distance"> ${utilService.getDistance(gUserPos, loc.geo)}km
+                 </p>`
+        } 
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
@@ -53,8 +61,7 @@ function renderLocs(locs) {
                 ` | Updated: ${utilService.elapsedTime(loc.updatedAt)}`
                 : ''}
                 </p>
-                <p class="loc-distance"> km
-                </p>
+                ${distanceHtml}
             </div>
             <div class="loc-btns">     
                <button title="Delete" onclick="app.onRemoveLoc('${loc.id}')">🗑️</button>
@@ -102,6 +109,8 @@ function onSearchAddress(ev) {
 }
 
 function onAddLoc(geo) {
+    console.log(geo)
+    
     const locName = prompt('Loc name', geo.address || 'Just a place')
     if (!locName) return
 
@@ -132,14 +141,14 @@ function loadAndRenderLocs() {
 }
 
 function onPanToUserPos() {
-    console.log(varsService.gUserPos)
     mapService.getUserPosition()
         .then(latLng => {
-            
             mapService.panTo({ ...latLng, zoom: 15 })
             unDisplayLoc()
             loadAndRenderLocs()
             flashMsg(`You are at Latitude: ${latLng.lat} Longitude: ${latLng.lng}`)
+            gUserPos = latLng
+            // console.log(gUserPos)
         })
         .catch(err => {
             console.error('OOPs:', err)
@@ -232,7 +241,7 @@ function getFilterByFromQueryParams() {
     const queryParams = new URLSearchParams(window.location.search)
     const txt = queryParams.get('txt') || ''
     const minRate = queryParams.get('minRate') || 0
-    locService.setFilterBy({txt, minRate})
+    locService.setFilterBy({ txt, minRate })
 
     document.querySelector('input[name="filter-by-txt"]').value = txt
     document.querySelector('input[name="filter-by-rate"]').value = minRate
