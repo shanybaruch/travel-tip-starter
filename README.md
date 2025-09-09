@@ -14,7 +14,7 @@ TravelTip is an app that keeps a list of favorite locations
 - Create – click on the map prompts for name and rate
 - Read – Selected location details (see below) 
 - Update – can update location rate
-- Delete – can delete a location
+- Delete – can delete a location with confirm
 - List - Including filtering, sorting and grouping
 
 ## Selected Location

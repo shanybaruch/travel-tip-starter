@@ -30,7 +30,9 @@ export const locService = {
     save,
     setFilterBy,
     setSortBy,
-    getLocCountByRateMap
+    getLocCountByRateMap,
+    getLocCountByLastUpdated,
+    confirmRemove,
 }
 
 function query() {
@@ -38,7 +40,7 @@ function query() {
         .then(locs => {
             if (gFilterBy.txt) {
                 const regex = new RegExp(gFilterBy.txt, 'i')
-                locs = locs.filter(loc => regex.test(loc.name))
+                locs = locs.filter(loc => regex.test(loc.name) || regex.test(loc.geo.address))
             }
             if (gFilterBy.minRate) {
                 locs = locs.filter(loc => loc.rate >= gFilterBy.minRate)
@@ -54,8 +56,11 @@ function query() {
                 locs.sort((p1, p2) => (p1.rate - p2.rate) * gSortBy.rate)
             } else if (gSortBy.name !== undefined) {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
+            } else if (gSortBy.creation !== undefined) {
+                locs.sort((p1, p2) => ((new Date(p1.createdAt) - new Date(p2.createdAt))) * gSortBy.creation)
+                console.log(gSortBy);  
             }
-            console.log(locs);
+
             return locs
         })
 }
@@ -98,8 +103,30 @@ function getLocCountByRateMap() {
         })
 }
 
+function getLocCountByLastUpdated() {
+    return storageService.query(DB_KEY)
+        .then(locs => {
+            const now = Date.now()
+            const locCountByLastUpdated = locs.reduce((map, loc) => {
+                if (!loc.updatedAt) map.never++
+                else if ((now - loc.updatedAt) / (1000 * 60 * 60 * 24) >= 7) map.past++
+                else map.today++
+                return map
+            }, { today: 0, past: 0, never: 0 })
+            locCountByLastUpdated.total = locs.length
+            return locCountByLastUpdated
+        })
+}
+
 function setSortBy(sortBy = {}) {
     gSortBy = sortBy
+}
+
+function confirmRemove() {
+  return new Promise((resolve) => {
+    const result = confirm('Are you sure about removing the location?')
+    resolve(result)
+  })
 }
 
 function _createLocs() {
