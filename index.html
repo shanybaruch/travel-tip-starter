@@ -68,12 +68,12 @@
         </div>
     </main>
 
-    <dialog id="dialog" class="dialog">
-        <form method="dialog">
-            <input type="text" name="dialog-loc" class="dialog-loc">
-            <input type="number" name="dialog-rate" class="dialog-rate">
+    <dialog id="dialog" open class="dialog hide">
+        <form method="dialog" onsubmit="event.preventDefault()">
+            <input type="text" placeholder="Put a place" name="dialog-loc" class="dialog-loc">
+            <input type="number" value="4" name="dialog-rate" class="dialog-rate">
             <button type="submit">Save</button>
-            <button type="button" onclick="document.getElementById('dialog').close()">Cencel</button>
+            <button type="button" onclick="document.querySelector('.dialog').close()">Cencel</button>
         </form>
     </dialog>
 

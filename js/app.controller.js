@@ -47,7 +47,7 @@ function renderLocs(locs) {
             distanceHtml =
                 ` <p class="loc-distance"> distance ${utilService.getDistance(gUserPos, loc.geo)}km
                  </p>`
-        } 
+        }
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
@@ -109,18 +109,29 @@ function onSearchAddress(ev) {
 }
 
 function onAddLoc(geo) {
-    console.log(geo)
+    // console.log(geo)
+
+    const elDialog = document.querySelector('.dialog')
+    var elLoc = document.querySelector('.dialog-loc')
+    var elRate = document.querySelector('.dialog-rate')
     
-    const locName = prompt('Loc name', geo.address || 'Just a place')
-    if (!locName) return
+    // elDialog.classList.remove('hide')
+    elDialog.showModal()
+    elLoc.value = geo.address || 'Just a place'
+    elRate.value = 4
+
+    // var locName = geo.address || 'Just a place'
+    // if (!elLoc) return
 
     const loc = {
-        name: locName,
-        rate: +prompt(`Rate (1-5)`, '3'),
+        name: elLoc.value,
+        rate: elRate.value,
         geo
     }
     locService.save(loc)
         .then((savedLoc) => {
+            elDialog.close()
+            // elDialog.classList.add('hide')
             flashMsg(`Added Location (id: ${savedLoc.id})`)
             utilService.updateQueryParams({ locId: savedLoc.id })
             loadAndRenderLocs()
@@ -162,6 +173,7 @@ function onUpdateLoc(locId) {
             const rate = prompt('New rate?', loc.rate)
             if (rate && rate !== loc.rate) {
                 loc.rate = rate
+
                 locService.save(loc)
                     .then(savedLoc => {
                         flashMsg(`Rate was set to: ${savedLoc.rate}`)
