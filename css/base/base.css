@@ -49,3 +49,7 @@ button:hover {
 .smaller {
     font-size: .8em;
 }
+
+.dialog {
+    background-color: pink;
+}

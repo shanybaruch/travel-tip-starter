@@ -67,6 +67,16 @@
             </section>
         </div>
     </main>
+
+    <dialog id="dialog" class="dialog">
+        <form method="dialog">
+            <input type="text" name="dialog-loc" class="dialog-loc">
+            <input type="number" name="dialog-rate" class="dialog-rate">
+            <button type="submit">Save</button>
+            <button type="button" onclick="document.getElementById('dialog').close()">Cencel</button>
+        </form>
+    </dialog>
+
     <pre class="debug" hidden></pre>
     <div class="user-msg"></div>
     <script type="module" src="js/app.controller.js"></script>
