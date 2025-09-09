@@ -45,7 +45,7 @@ function renderLocs(locs) {
         var distanceHtml = ''
         if (gUserPos) {
             distanceHtml =
-                ` <p class="loc-distance"> ${utilService.getDistance(gUserPos, loc.geo)}km
+                ` <p class="loc-distance"> distance ${utilService.getDistance(gUserPos, loc.geo)}km
                  </p>`
         } 
         return `
