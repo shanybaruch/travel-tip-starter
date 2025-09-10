@@ -114,8 +114,7 @@ function getDistance(latLng1, latLng2, unit = 'K') {
         if (unit === 'N') { dist = dist * 0.8684 }
 
         dist = +dist.toFixed(2)
-        console.log(dist)
-        
+        // console.log(dist)
         return dist
     }
 }
