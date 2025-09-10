@@ -17,7 +17,7 @@
 
 .loc-list li {
     padding-bottom: .2em;
-    border-bottom: 1px solid #222;
+    /* border-bottom: 1px solid #222; */
 }
 
 .loc-list li h4 {
