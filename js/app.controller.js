@@ -19,6 +19,7 @@ window.app = {
     onShareLoc,
     onSetSortBy,
     onSetFilterBy,
+    onAddLoc,
 }
 
 function onInit() {
@@ -27,7 +28,7 @@ function onInit() {
     mapService.initMap()
         .then(() => {
             // onPanToTokyo()
-            mapService.addClickListener(onAddLoc)
+            mapService.addClickListener(getInfoForAddLoc)
         })
         .catch(err => {
             console.error('OOPs:', err)
@@ -111,30 +112,37 @@ function onSearchAddress(ev) {
         })
 }
 
-function onAddLoc(geo) {
+function getInfoForAddLoc(geo) {
     // console.log(geo)
 
     const elDialog = document.querySelector('.dialog')
     var elLoc = document.querySelector('.dialog-loc')
     var elRate = document.querySelector('.dialog-rate')
-    
-    // elDialog.classList.remove('hide')
-    elDialog.showModal()
-    elLoc.value = geo.address || 'Just a place'
-    elRate.value = 4
 
-    // var locName = geo.address || 'Just a place'
-    // if (!elLoc) return
+    elDialog.showModal()
+    elLoc.value = geo.address
+
+    elDialog.dataset.geo = JSON.stringify(geo)
+}
+
+function onAddLoc(ev) {
+    ev?.preventDefault()
+
+    const elDialog = document.querySelector('.dialog')
+    var elLoc = document.querySelector('.dialog-loc')
+    var elRate = document.querySelector('.dialog-rate')
+
+    const geo = JSON.parse(elDialog.dataset.geo)
 
     const loc = {
         name: elLoc.value,
         rate: elRate.value,
         geo
     }
+
     locService.save(loc)
         .then((savedLoc) => {
             elDialog.close()
-            // elDialog.classList.add('hide')
             flashMsg(`Added Location (id: ${savedLoc.id})`)
             utilService.updateQueryParams({ locId: savedLoc.id })
             loadAndRenderLocs()

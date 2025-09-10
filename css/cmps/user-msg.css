@@ -3,7 +3,7 @@
     position: fixed;
     bottom: -100px;
     right: 10px;
-    background-color: #111;
+    background-color: var(--color1);
     padding: 10px;
 }
 

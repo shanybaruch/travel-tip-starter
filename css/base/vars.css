@@ -23,12 +23,13 @@
     } */
 
 :root {
-    --bg1: rgb(82, 189, 189);
+    --bg1: rgb(121, 255, 255);
     --bg2: rgb(55, 55, 55);
-    --bg3: rgb(212, 106, 212);
+    --bg2-light: rgb(69, 69, 69);
+    --bg3: rgb(255, 162, 255);
     --color1: aliceblue;
-    --color2: rgb(225, 122, 177);
-    --color3: rgb(229, 211, 110);
+    --color2: rgb(255, 180, 220);
+    --color3: rgb(255, 239, 148);
     --color4: rgb(218, 196, 141);
     --gray1: lightgray;
 }
