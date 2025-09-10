@@ -110,7 +110,7 @@ function onSearchAddress(ev) {
 }
 
 function getInfoForAddLoc(geo) {
-    console.log(geo)
+    // console.log(geo)
 
     const elDialog = document.querySelector('.dialog')
     var elLoc = document.querySelector('.dialog-loc')

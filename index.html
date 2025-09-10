@@ -12,7 +12,8 @@
     <header>
         <h1>TravelTip</h1>
         <section class="selected-loc">
-            <h2>Location: <span class="loc-name"></span> <span class="loc-rate"></span></h2>
+            <h2>Location: <span class="loc-name"></span> </h2>
+            <span class="loc-rate"></span>
             <h4 class="loc-address"></h4>
             <button onclick="app.onCopyLoc()">Copy location</button>
             <button onclick="app.onShareLoc()">Share location</button>
@@ -30,7 +31,7 @@
         <div>
             <section class="locs-container">
                 <section class="loc-filter">
-                    <div>
+                    <div class="div-input-filter">
                         <input name="filter-by-txt" type="text" placeholder="Search location"
                             oninput="app.onSetFilterBy({txt: this.value})" />
                     </div>

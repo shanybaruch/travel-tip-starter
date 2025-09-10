@@ -10,6 +10,7 @@
 }
 
 .loc-list {
+    text-align: center;
     list-style: none;
     padding: 0;
 }
@@ -21,7 +22,9 @@
 
 .loc-list li h4 {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    align-items: center;
+    justify-content: center;
 }
 
 .loc-list li.active {
@@ -33,7 +36,10 @@
 }
 
 .loc-btns {
-    text-align: end;
+    /* text-align: center; */
+    button {
+        border-radius: 100vh;
+    }
 }
 
 .map {
@@ -58,41 +64,63 @@
     background-color: whitesmoke;
 }
 
+.div-input-filter {
+    margin: 0;
+    /* padding-top: 0.9em; */
+
+    .filter-by-txt {
+        padding-top: 0.9em;
+        margin-top: 0.4em;
+    }
+}
+
 .loc-filter {
-    /* background-color: var(--bg1); */
-    padding: 0.6em;
-    border-radius: 0.3em;
-    border: 1px solid gray;
+    padding-block: 0.4em;
+    background-color: var(--bg2-light);
 
     display: flex;
     flex-direction: column;
-    /* align-items: center; */
 
-    p,
-    div {
-        margin-block: 0.5em;
+    div,
+    p {
+        padding: 0.5em;
     }
 }
 
 .loc-filter input[type=text] {
     width: 98%;
-    margin: .5em;
+    margin-bottom: .5em;
     margin-inline-start: 0;
     border-radius: 0.1em;
 }
 
 .pie {
     display: inline-block;
-    width: 120px;
-    height: 120px;
+    width: 110px;
+    height: 110px;
     border-radius: 50%;
     /* background-image: conic-gradient(orange 0%, orange 64%, blue 64%, blue 81%, black 81%, black 100%); */
 }
 
+.loc-stats-rate {
+
+    .pie {
+        margin-inline-start: 3em;
+    }
+
+    .legend {
+        margin-inline-start: 8em;
+    }
+}
+
 .loc-stats ul {
     list-style-type: none;
-    display: inline-block;
+    /* display: inline-block; */
+    letter-spacing: 1px;
     text-transform: capitalize;
+    font-weight: 700;
+    font-size: 0.8rem;
+
 }
 
 .loc-stats .pie-label {
@@ -100,5 +128,7 @@
     background-color: black;
     width: 1em;
     height: 1em;
-    margin-inline-end: 0.3em;
+    border-radius: 100vh;
+    font-size: 0.8rem;
+    margin-inline-end: 0.5em;
 }
