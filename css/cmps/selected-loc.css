@@ -4,14 +4,39 @@
     max-height: 0em;
     height: 0;
     overflow: hidden;
-    transition: .5s;
+    transition: .9s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    width: max-content;
+    border-radius: 100vh;
+    text-align: center;
+
+    span:nth-child(2) {
+        color: white;
+        font-size: 1.2em;
+    }
+
+    h2 {
+        margin: 0.5em;
+    }
+
+    h4 {
+        margin: 0.5em;
+    }
+
+    button {
+        text-align: center;
+    }
+
+    input {
+        display: none;
+    }
 }
 
 .selected-loc.show {
     height: auto;
-    max-height: 15em;
+    max-height: 10em;
     padding: 0.5em;
+    transition: .9s;
 }
 
 .selected-loc input[name=loc-copier] {

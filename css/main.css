@@ -3,6 +3,7 @@
 @import url(cmps/user-msg.css);
 @import url(cmps/locs.css);
 @import url(cmps/selected-loc.css);
+@import url(fontawesome/css/all.min.css);
 
 @media (min-width: 750px) {
     main {

@@ -30,10 +30,11 @@ input[type=number] {
 }
 
 button {
-    color: whitesmoke;
+    color: rgb(0, 0, 0);
     border: 0;
-    border-radius: .2em;
-    background-color: #4d4d4d;
+    border-radius: 100vh;
+    /* background-color: inherit; */
+    background-color: var(--gray1);
     padding: 7px 7px;
     margin: 1px;
     cursor: pointer;
@@ -41,8 +42,9 @@ button {
 }
 
 button:hover {
-    color: var(--color2);
-    background-color: #111;
+    color: black;
+    background-color: #ffffff;
+    opacity: 0.6;
 }
 
 .muted {

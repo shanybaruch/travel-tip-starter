@@ -22,9 +22,9 @@
 
 .loc-list li h4 {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    justify-content: center;
+    /* justify-content: center; */
 }
 
 .loc-list li.active {
@@ -36,9 +36,11 @@
 }
 
 .loc-btns {
-    /* text-align: center; */
     button {
         border-radius: 100vh;
+        width: 2em;
+        font-size: 1rem;
+        font-weight: 600;
     }
 }
 
@@ -77,6 +79,7 @@
 .loc-filter {
     padding-block: 0.4em;
     background-color: var(--bg2-light);
+    font-size: 0.9rem;
 
     display: flex;
     flex-direction: column;
@@ -102,7 +105,7 @@
     /* background-image: conic-gradient(orange 0%, orange 64%, blue 64%, blue 81%, black 81%, black 100%); */
 }
 
-.loc-stats-rate {
+.loc-stats-rate, .loc-stats-lastUpdated {
 
     .pie {
         margin-inline-start: 3em;

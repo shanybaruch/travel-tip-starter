@@ -65,9 +65,9 @@ function renderLocs(locs) {
                 ${distanceHtml}
             </div>
             <div class="loc-btns">     
-               <button title="Delete" onclick="app.onRemoveLoc('${loc.id}')">🗑️</button>
-               <button title="Edit" onclick="app.onUpdateLoc('${loc.id}')">✏️</button>
-               <button title="Select" onclick="app.onSelectLoc('${loc.id}')">🗺️</button>
+               <button title="Delete" class="fa-regular fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
+               <button title="Edit" class="fa-regular fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
+               <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
             </div>     
         </li>`}).join('')
 
