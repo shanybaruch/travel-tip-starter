@@ -21,7 +21,7 @@
         </section>
         <form class="form-search" onsubmit="app.onSearchAddress(event)">
             <input type="text" name="address" placeholder="Search address" />
-            <button title="Search">🔍</button>
+            <button title="Search" class="fa-solid fa-magnifying-glass"></button>
             <button type="button" title="My Position" onclick="app.onPanToUserPos()" class="btn-user-pos">&nbsp;
             </button>
         </form>
@@ -37,14 +37,14 @@
                     </div>
                     <div>
                         <label>
-                            Min Rate:
+                            Min Rate
                             <input name="filter-by-rate" type="range" min="0" max="5" value="0"
                                 class="filter-rate-range"
                                 onchange="this.title=this.value;app.onSetFilterBy({minRate: this.value})" />
                         </label>
                     </div>
                     <p>
-                        Sort by:
+                        Sort
                         <select class="sort-by" onchange="app.onSetSortBy()">
                             <option value="name">Name</option>
                             <option value="rate" selected>Rate</option>
@@ -52,7 +52,7 @@
                         </select>
                         <label>
                             <input class="sort-desc" type="checkbox" oninput="app.onSetSortBy()" />
-                            Descending
+                            <span>Descending</span>
                         </label>
                     </p>
                 </section>
@@ -65,8 +65,8 @@
                         <div class="pie"></div>
                         <ul class="legend"></ul>
                     </div>
-                    <div class="loc-stats-lastUpdated">
-                        <h4>Last updates:</h4>
+                    <div class="loc-stats-updates">
+                        <h4>Updates:</h4>
                         <div class="pie"></div>
                         <ul class="legend"></ul>
                     </div>

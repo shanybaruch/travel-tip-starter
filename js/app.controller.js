@@ -52,21 +52,21 @@ function renderLocs(locs) {
         return `
         <li class="loc ${className}" data-id="${loc.id}">
             <h4>  
-                <span>${loc.name}</span>
-                <span title="${loc.rate} stars">${'★'.repeat(loc.rate)}</span>
+            <span>${loc.name}</span>
+            <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
             </h4>
             <div class="more-details">
                 <p class="muted">
-                Created: ${utilService.elapsedTime(loc.createdAt)}
+                Created in ${utilService.elapsedTime(loc.createdAt)}
                 ${(loc.createdAt !== loc.updatedAt) ?
-                ` | Updated: ${utilService.elapsedTime(loc.updatedAt)}`
+                ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
                 : ''}
                 </p>
                 ${distanceHtml}
             </div>
             <div class="loc-btns">     
-               <button title="Delete" class="fa-regular fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
-               <button title="Edit" class="fa-regular fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
+               <button title="Delete" class="fa-solid fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
+               <button title="Edit" class="fa-solid fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
                <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
             </div>     
         </li>`}).join('')
@@ -304,8 +304,8 @@ function renderLocStats() {
     locService.getLocCountByRateMap().then(stats => {
         handleStats(stats, 'loc-stats-rate')
     })
-    locService.getLocCountByLastUpdated().then(stats => {
-        handleStats(stats, 'loc-stats-lastUpdated')
+    locService.getLocCountByUpdates().then(stats => {
+        handleStats(stats, 'loc-stats-updates')
     })
 }
 
