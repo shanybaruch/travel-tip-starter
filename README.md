@@ -10,7 +10,7 @@ TravelTip is an app that keeps a list of favorite locations
 - The user can also search for an address and pan the map to that point
 - The User can pan the map to his own geo-location
 - If user position is known, show distance to locations
-- Change pronmpt to dialog when adding location
+- Change prompt to dialog when add and update location
 
 ## Locations CRUDL 
 - Create – click on the map prompts for name and rate

@@ -23,7 +23,8 @@ window.app = {
     onSetFilterBy,
     onAddLoc,
     loadAndRenderLocs,
-    onSaveUpdateLoc
+    onSaveUpdateLoc,
+    closeSelectLoc,
 }
 
 function onInit() {
@@ -336,6 +337,12 @@ function renderLocStats() {
     locService.getLocCountByUpdates().then(stats => {
         handleStats(stats, 'loc-stats-updates')
     })
+}
+
+function closeSelectLoc() {
+    document.querySelector('.loc.active').classList.remove('active')
+    document.querySelector('.selected-loc').classList.remove('show')
+    unDisplayLoc()
 }
 
 function handleStats(stats, selector) {

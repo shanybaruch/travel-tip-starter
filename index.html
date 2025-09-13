@@ -17,7 +17,7 @@
             <button onclick="app.onCopyLoc()">Copy</button>
             <button onclick="app.onShareLoc()">Share</button>
             <input name="loc-copier" />
-            <button onclick="document.querySelector('.selected-loc').classList.remove('show')">Close</button>
+            <button onclick="app.closeSelectLoc()">Close</button>
         </section>
         <form class="form-search" onsubmit="app.onSearchAddress(event)">
             <input type="text" name="address" placeholder="Search address" />
