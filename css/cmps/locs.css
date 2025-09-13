@@ -10,8 +10,11 @@
         letter-spacing: 0.3px;
         font-size: 1.3rem;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        /* color: var(--color2); */
-        background-color: var(--color2);
+        color: var(--color2);
+        /* border: 2px solid white; */
+        background-color: white;
+        /* box-shadow: 0 0 5px white; */
+        /* background-color: var(--color2); */
         width: max-content;
         margin: 1em auto;
         border-radius: 0.8em;
@@ -21,34 +24,34 @@
 }
 
 .loc-list {
-    /* text-align: center; */
     list-style: none;
     padding: 0;
-}
+   
+    li {
+        padding-bottom: 1.4em;
+        display: grid;
+        grid-template-columns: 5fr 3fr;
 
-.loc-list li {
-    padding-bottom: 15px;
-    /* border-bottom: 1px solid var(--color2); */
-}
+        
+        /* border-bottom: 1px solid var(--color2); */
 
-.stars {
-    color: var(--color2);
-}
+        h4 {
+            margin: 0.1em;
+        
+            span {
+                margin-inline-end: 10px;
+            }
+        }
 
-.loc-list li {
-    h4 {
-        margin: 0.1em;
+        .loc-btns {
+            align-self: center;
+        }
 
-        span {
-            margin-inline-end: 10px;
+        .muted {
+            font-size: 0.8rem;
+            margin: 0;
         }
     }
-
-    .muted {
-        font-size: 0.8rem;
-        margin: 0;
-    }
-
 }
 
 .loc-list li.active {
@@ -59,7 +62,13 @@
     color: var(--color4);
 }
 
+.stars {
+    color: var(--color2);
+}
+
 .loc-btns {
+    text-align: end;
+
     button {
         border-radius: 100vh;
         width: 1.8em;
@@ -67,8 +76,6 @@
         margin: 0;
         padding: 0.4em;
     }
-
-    text-align: end;
 }
 
 .map {
@@ -126,10 +133,7 @@
     div,
     p {
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        /* color: #2196f3; */
     }
-
-    /* background-color: #2196f3; */
 
     input[type=text] {
         margin-bottom: .7em;
@@ -174,16 +178,19 @@
 
 .loc-stats-rate,
 .loc-stats-updates {
+
+    display: grid;
+
     h4 {
         margin: 0;
     }
 
     .pie {
-        margin-inline-start: 3em;
+        justify-self: center;
     }
 
     .legend {
-        margin-inline-start: 8em;
+        justify-self: end;
     }
 }
 

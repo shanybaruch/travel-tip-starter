@@ -51,23 +51,25 @@ function renderLocs(locs) {
         }
         return `
         <li class="loc ${className}" data-id="${loc.id}">
-            <h4>  
-            <span>${loc.name}</span>
-            <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
-            </h4>
-            <div class="more-details">
+            <div>
+                <h4>  
+                    <span>${loc.name}</span>
+                    <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
+                </h4>
+                <div class="more-details">
                 <p class="muted">
                 Created in ${utilService.elapsedTime(loc.createdAt)}
                 ${(loc.createdAt !== loc.updatedAt) ?
-                ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
-                : ''}
-                </p>
-                ${distanceHtml}
-            </div>
+                    ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
+                   : ''}
+                   </p>
+                   ${distanceHtml} 
+                </div>
+            </div> 
             <div class="loc-btns">     
-               <button title="Delete" class="fa-solid fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
-               <button title="Edit" class="fa-solid fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
-               <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
+                <button title="Delete" class="fa-solid fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
+                <button title="Edit" class="fa-solid fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
+                <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
             </div>     
         </li>`}).join('')
 
