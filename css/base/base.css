@@ -10,12 +10,19 @@ header {
     background-color: var(--bg2);
     color: aliceblue;
     padding: 0.3em;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
 }
 
 header h1 {
     margin: 0;
     text-align: center;
-    padding-top: 0.5em;
+    padding-block: 0.8em;
+
+    justify-content: center;
+    align-self: center;
+    grid-column: 2 / 3;
 }
 
 input[type=text],

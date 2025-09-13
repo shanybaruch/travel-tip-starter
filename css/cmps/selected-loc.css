@@ -12,8 +12,8 @@
     text-align: center;
     /* margin: 0.5em auto; */
     position: fixed;
-    top: 5px;
-    left: 50px;
+    top: 10px;
+    left: 30px;
 
     span:nth-child(2) {
         color: white;

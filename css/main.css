@@ -9,9 +9,10 @@
     main {
         display: flex;
         flex-direction: row-reverse;
+        justify-content: center;
     }
     .locs-container {
-        width: 22vw;
+        width: 20vw;
     }
 }
 

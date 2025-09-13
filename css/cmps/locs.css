@@ -88,8 +88,8 @@
 }
 
 .map {
-    width: 100%;
-    height: 100vh;
+    width: 80%;
+    height: 94vh;
 }
 
 .form-search {
@@ -179,8 +179,8 @@
 
 .pie {
     display: inline-block;
-    width: 110px;
-    height: 110px;
+    width: 90px;
+    height: 90px;
     border-radius: 50%;
     /* background-image: conic-gradient(orange 0%, orange 64%, blue 64%, blue 81%, black 81%, black 100%); */
 }
@@ -192,6 +192,9 @@
 
     h4 {
         margin: 0;
+        font-size: 0.9rem;
+        font-weight: 500;
+        letter-spacing: 0.6px;
     }
 
     .pie {
@@ -205,12 +208,9 @@
 
 .loc-stats ul {
     list-style-type: none;
-    /* display: inline-block; */
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     text-transform: capitalize;
-    font-weight: 700;
     font-size: 0.8rem;
-
 }
 
 .loc-stats .pie-label {
@@ -226,6 +226,8 @@
 .form-search {
     button {
         font-size: 1rem;
-        margin-inline: 7px;
+        /* margin-inline: 7px; */
+
     }
+    align-self: end;
 }
