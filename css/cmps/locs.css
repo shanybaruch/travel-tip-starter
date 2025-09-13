@@ -26,20 +26,29 @@
 .loc-list {
     list-style: none;
     padding: 0;
-   
+
     li {
         padding-bottom: 1.4em;
-        display: grid;
-        grid-template-columns: 5fr 3fr;
 
-        
+        div {
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        /* display: grid;
+        grid-template-columns: 5fr 3fr; */
+
+
         /* border-bottom: 1px solid var(--color2); */
 
         h4 {
-            margin: 0.1em;
-        
+            display: flex;
+            justify-content: space-between;
+            margin-block: 0.5em;
+
             span {
-                margin-inline-end: 10px;
+                margin-inline-end: 5px;
             }
         }
 

@@ -56,26 +56,26 @@ function renderLocs(locs) {
         }
         return `
         <li class="loc ${className}" data-id="${loc.id}">
+            <h4>  
+                <span>${loc.name}</span>
+                <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
+            </h4>
             <div>
-                <h4>  
-                    <span>${loc.name}</span>
-                    <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
-                </h4>
                 <div class="more-details">
-                <p class="muted">
-                Created in ${utilService.elapsedTime(loc.createdAt)}
-                ${(loc.createdAt !== loc.updatedAt) ?
-                ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
-                : ''}
-                   </p>
-                   ${distanceHtml} 
+                    <p class="muted">
+                        Created in ${utilService.elapsedTime(loc.createdAt)}
+                        ${(loc.createdAt !== loc.updatedAt) ?
+                        ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
+                    : ''}
+                    </p>
+                    ${distanceHtml} 
                 </div>
-            </div> 
-            <div class="loc-btns">     
-                <button title="Delete" class="fa-solid fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
-                <button title="Edit" class="fa-solid fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
-                <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
-            </div>     
+                <div class="loc-btns">     
+                    <button title="Delete" class="fa-solid fa-trash-can" onclick="app.onRemoveLoc('${loc.id}')"></button>
+                    <button title="Edit" class="fa-solid fa-pen-to-square" onclick="app.onUpdateLoc('${loc.id}')"></button>
+                    <button title="Select" class="fa-solid fa-location-dot" onclick="app.onSelectLoc('${loc.id}')"></button>
+                </div>
+            </div>
         </li>`}).join('')
 
     const elLocList = document.querySelector('.loc-list')
@@ -342,8 +342,6 @@ function renderLocStats() {
         handleStats(stats, 'loc-stats-rate')
     })
     locService.getLocCountByUpdates().then(stats => {
-        console.log(stats)
-        
         handleStats(stats, 'loc-stats-updates')
     })
 }
@@ -354,7 +352,7 @@ function closeSelectLoc() {
     unDisplayLoc()
 }
 
-function handleStats(stats, selector) {   
+function handleStats(stats, selector) {
     // stats = { low: 37, medium: 11, high: 100, total: 148 }
     // stats = { low: 5, medium: 5, high: 5, baba: 55, mama: 30, total: 100 }
     const labels = cleanStats(stats)

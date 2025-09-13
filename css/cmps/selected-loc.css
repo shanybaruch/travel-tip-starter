@@ -6,25 +6,37 @@
     overflow: hidden;
     transition: .9s;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    width: max-content;
-    border-radius: 100vh;
+    /* width: max-content; */
+    width: 17vw;
+    border-radius: 10vh;
     text-align: center;
+    /* margin: 0.5em auto; */
+    position: fixed;
+    top: 5px;
+    left: 50px;
 
     span:nth-child(2) {
         color: white;
-        font-size: 1.2em;
+        font-size: 0.8em;
     }
 
     h2 {
-        margin: 0.5em;
+        margin: 0;
+        padding-top: 0.3em;
+        padding-inline: .4em;
+        font-size: 1rem;
     }
 
     h4 {
-        margin: 0.5em;
+        margin: 0;
+        font-size: 0.8rem;
+        /* font-weight: 100; */
     }
 
     button {
         text-align: center;
+        font-size: 0.7rem;
+        padding: 0.2em;
     }
 
     input {
@@ -34,9 +46,7 @@
 
 .selected-loc.show {
     height: auto;
-    max-height: 10em;
-    padding: 0.5em;
-    transition: .9s;
+    max-height: 8em;
 }
 
 .selected-loc input[name=loc-copier] {
