@@ -21,7 +21,7 @@
         </section>
         <form class="form-search" onsubmit="app.onSearchAddress(event)">
             <input type="text" name="address" placeholder="Search address" />
-            <button title="Search" class="fa-solid fa-magnifying-glass"></button>
+            <button title="Search">🔍</button>
             <button type="button" title="My Position" onclick="app.onPanToUserPos()" class="btn-user-pos">&nbsp;
             </button>
         </form>
@@ -37,14 +37,14 @@
                     </div>
                     <div>
                         <label>
-                            Min Rate
+                            Min Rate:
                             <input name="filter-by-rate" type="range" min="0" max="5" value="0"
                                 class="filter-rate-range"
                                 onchange="this.title=this.value;app.onSetFilterBy({minRate: this.value})" />
                         </label>
                     </div>
                     <p>
-                        Sort
+                        Sort by:
                         <select class="sort-by" onchange="app.onSetSortBy()">
                             <option value="name">Name</option>
                             <option value="rate" selected>Rate</option>
@@ -52,7 +52,7 @@
                         </select>
                         <label>
                             <input class="sort-desc" type="checkbox" oninput="app.onSetSortBy()" />
-                            <span>Descending</span>
+                            Descending
                         </label>
                     </p>
                 </section>
@@ -65,7 +65,7 @@
                         <div class="pie"></div>
                         <ul class="legend"></ul>
                     </div>
-                    <div class="loc-stats-updates">
+                    <div class="loc-stats-lastUpdated">
                         <h4>Updates:</h4>
                         <div class="pie"></div>
                         <ul class="legend"></ul>
@@ -75,12 +75,20 @@
         </div>
     </main>
 
-    <dialog id="dialog" class="dialog">
+    <dialog class="dialog-add-loc">
         <form method="dialog" onsubmit="app.onAddLoc(event)">
-            <input type="text" placeholder="Put a place" name="dialog-loc" class="dialog-loc">
-            <input type="number" value="4" name="dialog-rate" class="dialog-rate">
+            <input type="text" placeholder="Place name" class="loc-add">
+            <input type="number" value="3" min="1" max="5" class="rate-add">
             <button type="submit">Save</button>
-            <button type="button" onclick="document.querySelector('.dialog').close()">Cencel</button>
+            <button type="button" onclick="document.querySelector('.dialog-add-loc').close()">Cencel</button>
+        </form>
+    </dialog>
+    <dialog class="dialog-update-loc">
+        <form method="dialog" onsubmit="app.onSaveUpdateLoc()">
+            <input type="text" placeholder="Place name" class="loc-update">
+            <input type="number" value="3" min="1" max="5" class="rate-update">
+            <button type="submit">Save</button>
+            <button type="button" onclick="document.querySelector('.dialog-update-loc').close()">Cencel</button>
         </form>
     </dialog>
 

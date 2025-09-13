@@ -4,6 +4,8 @@ import { mapService } from './services/map.service.js'
 
 
 var gUserPos = null
+var gCurrentLoc = null
+
 
 window.onload = onInit
 
@@ -20,6 +22,8 @@ window.app = {
     onSetSortBy,
     onSetFilterBy,
     onAddLoc,
+    loadAndRenderLocs,
+    onSaveUpdateLoc
 }
 
 function onInit() {
@@ -60,8 +64,8 @@ function renderLocs(locs) {
                 <p class="muted">
                 Created in ${utilService.elapsedTime(loc.createdAt)}
                 ${(loc.createdAt !== loc.updatedAt) ?
-                    ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
-                   : ''}
+                ` <br> Updated ${utilService.elapsedTime(loc.updatedAt)}`
+                : ''}
                    </p>
                    ${distanceHtml} 
                 </div>
@@ -87,18 +91,19 @@ function renderLocs(locs) {
 
 function onRemoveLoc(locId) {
     locService.confirmRemove().then((confirmed) => {
-    if (confirmed) {
-        locService.remove(locId)
-            .then(() => {
-                flashMsg('Location removed')
-                unDisplayLoc()
-                loadAndRenderLocs()
-            })
-            .catch(err => {
-                console.error('OOPs:', err)
-                flashMsg('Cannot remove location')
-            })
-  } })  
+        if (confirmed) {
+            locService.remove(locId)
+                .then(() => {
+                    flashMsg('Location removed')
+                    unDisplayLoc()
+                    loadAndRenderLocs()
+                })
+                .catch(err => {
+                    console.error('OOPs:', err)
+                    flashMsg('Cannot remove location')
+                })
+        }
+    })
 }
 
 function onSearchAddress(ev) {
@@ -115,11 +120,9 @@ function onSearchAddress(ev) {
 }
 
 function getInfoForAddLoc(geo) {
-    // console.log(geo)
-
-    const elDialog = document.querySelector('.dialog')
-    var elLoc = document.querySelector('.dialog-loc')
-    var elRate = document.querySelector('.dialog-rate')
+    const elDialog = document.querySelector('.dialog-add-loc')
+    var elLoc = document.querySelector('.loc-add')
+    var elRate = document.querySelector('.rate-add')
 
     elDialog.showModal()
     elLoc.value = geo.address
@@ -128,15 +131,17 @@ function getInfoForAddLoc(geo) {
 }
 
 function onAddLoc(ev) {
+    console.log(ev)
+
     ev?.preventDefault()
 
-    const elDialog = document.querySelector('.dialog')
-    var elLoc = document.querySelector('.dialog-loc')
-    var elRate = document.querySelector('.dialog-rate')
+    const elDialog = document.querySelector('.dialog-add-loc')
+    var elLoc = document.querySelector('.loc-add')
+    var elRate = document.querySelector('.rate-add')
 
     const geo = JSON.parse(elDialog.dataset.geo)
 
-    const loc = {
+    var loc = {
         name: elLoc.value,
         rate: elRate.value,
         geo
@@ -181,23 +186,45 @@ function onPanToUserPos() {
 }
 
 function onUpdateLoc(locId) {
-    locService.getById(locId)
-        .then(loc => {
-            const rate = prompt('New rate?', loc.rate)
-            if (rate && rate !== loc.rate) {
-                loc.rate = rate
+    // console.log(locId)
+    const elDialog = document.querySelector('.dialog-update-loc')
+    var elLoc = document.querySelector('.loc-update')
+    var elRate = document.querySelector('.rate-update')
 
-                locService.save(loc)
-                    .then(savedLoc => {
-                        flashMsg(`Rate was set to: ${savedLoc.rate}`)
-                        loadAndRenderLocs()
-                    })
-                    .catch(err => {
-                        console.error('OOPs:', err)
-                        flashMsg('Cannot update location')
-                    })
+    locService.query()
+        .then(locs => {
+            const thisLoc = locs.find(loc => loc.id === locId)
+            if (!thisLoc) return console.error('Location not found')
 
-            }
+            gCurrentLoc = thisLoc
+
+            elLoc.value = thisLoc.name
+            elRate.value = thisLoc.rate
+            elDialog.showModal()
+
+        })
+}
+
+function onSaveUpdateLoc() {
+    const elDialog = document.querySelector('.dialog-update-loc')
+    var elLoc = document.querySelector('.loc-update')
+    var elRate = document.querySelector('.rate-update')
+
+    const updatedLoc = {
+        ...gCurrentLoc,
+        name: elLoc.value,
+        rate: elRate.value,
+    }
+    locService.save(updatedLoc)
+        .then((savedLoc) => {
+            elDialog.close()
+            flashMsg(`Updated Location (id: ${savedLoc.id})`)
+            utilService.updateQueryParams({ locId: savedLoc.id })
+            loadAndRenderLocs()
+        })
+        .catch(err => {
+            console.error('OOPs:', err)
+            flashMsg('Cannot update location')
         })
 }
 
@@ -335,6 +362,10 @@ function handleStats(stats, selector) {
     // colorsStr = `purple 0%, purple 33%, blue 33%, blue 67%, red 67%, red 100%`
 
     const elPie = document.querySelector(`.${selector} .pie`)
+    // console.log(elPie);
+    // console.log(selector);
+
+
     const style = `background-image: conic-gradient(${colorsStr})`
     elPie.style = style
 

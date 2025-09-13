@@ -58,7 +58,7 @@ function query() {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
             } else if (gSortBy.creation !== undefined) {
                 locs.sort((p1, p2) => ((new Date(p1.createdAt) - new Date(p2.createdAt))) * gSortBy.creation)
-                console.log(gSortBy);  
+                console.log(gSortBy);
             }
 
             return locs
@@ -123,10 +123,10 @@ function setSortBy(sortBy = {}) {
 }
 
 function confirmRemove() {
-  return new Promise((resolve) => {
-    const result = confirm('Are you sure about removing the location?')
-    resolve(result)
-  })
+    return new Promise((resolve) => {
+        const result = confirm('Are you sure about removing the location?')
+        resolve(result)
+    })
 }
 
 function _createLocs() {

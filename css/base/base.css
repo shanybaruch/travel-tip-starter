@@ -36,7 +36,7 @@ button {
     padding: 7px 7px;
     margin: 1px;
     cursor: pointer;
-    transition: .5s;
+    transition: .6s;
 }
 
 button:hover {
@@ -56,7 +56,7 @@ button:hover {
     font-size: .8em;
 }
 
-.dialog {
+dialog {
     background-color: pink;
     position: absolute;
     top: -20vh;
