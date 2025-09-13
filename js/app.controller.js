@@ -251,7 +251,6 @@ function displayLoc(loc) {
 
     mapService.panTo(loc.geo)
     mapService.setMarker(loc)
-    console.log(loc)
 
     const el = document.querySelector('.selected-loc')
     el.querySelector('.loc-name').innerText = loc.name
@@ -295,7 +294,7 @@ function flashMsg(msg) {
     el.classList.add('open')
     setTimeout(() => {
         el.classList.remove('open')
-    }, 3000)
+    }, 4000)
 }
 
 function getFilterByFromQueryParams() {
@@ -343,6 +342,8 @@ function renderLocStats() {
         handleStats(stats, 'loc-stats-rate')
     })
     locService.getLocCountByUpdates().then(stats => {
+        console.log(stats)
+        
         handleStats(stats, 'loc-stats-updates')
     })
 }
@@ -353,7 +354,7 @@ function closeSelectLoc() {
     unDisplayLoc()
 }
 
-function handleStats(stats, selector) {
+function handleStats(stats, selector) {   
     // stats = { low: 37, medium: 11, high: 100, total: 148 }
     // stats = { low: 5, medium: 5, high: 5, baba: 55, mama: 30, total: 100 }
     const labels = cleanStats(stats)
