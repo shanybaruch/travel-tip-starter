@@ -178,7 +178,14 @@ function onPanToUserPos() {
             loadAndRenderLocs()
             flashMsg(`You are at Latitude: ${latLng.lat} Longitude: ${latLng.lng}`)
             gUserPos = latLng
-            // console.log(gUserPos)
+
+            const loc = {
+                id: 'user-pos',
+                name: 'You are here',
+                rate: 0,
+                geo: { lat: latLng.lat, lng: latLng.lng }
+            }
+            mapService.setMarker(loc)
         })
         .catch(err => {
             console.error('OOPs:', err)
@@ -244,6 +251,7 @@ function displayLoc(loc) {
 
     mapService.panTo(loc.geo)
     mapService.setMarker(loc)
+    console.log(loc)
 
     const el = document.querySelector('.selected-loc')
     el.querySelector('.loc-name').innerText = loc.name
