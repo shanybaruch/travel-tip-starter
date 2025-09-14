@@ -11,6 +11,7 @@ TravelTip is an app that keeps a list of favorite locations
 - The User can pan the map to his own geo-location
 - If user position is known, show distance to locations
 - Change prompt to dialog when add and update location
+- Add button to toggle theme 
 
 ## Locations CRUDL 
 - Create – click on the map prompts for name and rate
@@ -80,7 +81,12 @@ window.app = {
     onCopyLoc,
     onShareLoc,
     onSetSortBy,
-    onSetFilterBy
+    onSetFilterBy,
+    onAddLoc,
+    loadAndRenderLocs,
+    onSaveUpdateLoc,
+    closeSelectLoc,
+    onToggleTheme,
 }
 ```
 

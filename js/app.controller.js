@@ -25,6 +25,7 @@ window.app = {
     loadAndRenderLocs,
     onSaveUpdateLoc,
     closeSelectLoc,
+    onToggleTheme,
 }
 
 function onInit() {
@@ -39,6 +40,10 @@ function onInit() {
             console.error('OOPs:', err)
             flashMsg('Cannot init map')
         })
+}
+
+function onToggleTheme() {
+    document.body.classList.toggle('alt-theme')
 }
 
 function renderLocs(locs) {

@@ -22,14 +22,26 @@
     --gray1: lightgray;
     } */
 
-:root {
-    --bg1: rgb(134, 204, 204);
+body {
+    --bg1: rgb(41, 209, 255);
+    --bg2: rgb(207, 207, 207);
+    --bg2-light: rgb(228, 228, 228);
+    --bg3: rgb(76, 189, 255);
+    --color1: rgb(100, 242, 255);
+    --color2: rgb(75, 216, 229);
+    --color3: rgb(255, 239, 148);
+    --color-basic: rgb(27, 27, 27);
+    --gray1: lightgray;
+}
+
+body.alt-theme {
+    --bg1: rgb(119, 188, 188);
     --bg2: rgb(55, 55, 55);
     --bg2-light: rgb(69, 69, 69);
     --bg3: rgb(222, 168, 222);
-    --color1: rgb(180, 220, 255);
-    --color2: rgb(237, 165, 203);
+    --color1: rgb(233, 169, 232);
+    --color2: rgb(255, 186, 223);
     --color3: rgb(255, 239, 148);
-    --color4: rgb(218, 196, 141);
+    --color-basic: rgb(243, 243, 243);
     --gray1: lightgray;
 }

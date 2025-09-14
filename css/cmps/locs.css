@@ -26,14 +26,14 @@
 .loc-list {
     list-style: none;
     padding: 0;
-
+    margin-block-end: 0;
+    
     li {
         padding-bottom: 1.4em;
 
         div {
             display: flex;
             justify-content: space-between;
-
         }
 
         /* display: grid;
@@ -59,17 +59,19 @@
         .muted {
             font-size: 0.8rem;
             margin: 0;
+            color: var(--color-basic);
         }
     }
 }
 
 .loc-list li.active {
     color: var(--color3);
+
+    .muted {
+        color: var(--color3);
+    }
 }
 
-.loc-list li.active .muted {
-    color: var(--color4);
-}
 
 .stars {
     color: var(--color2);
@@ -81,7 +83,7 @@
     button {
         border-radius: 100vh;
         width: 1.8em;
-        font-size: 0.9rem;
+        font-size: 1rem;
         margin: 0;
         padding: 0.4em;
     }
@@ -93,18 +95,18 @@
 }
 
 .form-search {
+    text-align: end;
+    align-self: end;
 
     button {
         margin: 0;
+        font-size: 1rem;
     }
 
     input {
         line-height: 1.5em;
         font-size: 0.8rem;
     }
-
-    display: block;
-    text-align: end;
 }
 
 .btn-user-pos {
@@ -130,14 +132,11 @@
 
 .loc-filter {
     background-color: var(--bg2-light);
-    font-size: 0.9rem;
+    font-size: 1rem;
     padding-top: 1.1em;
-
+    
     display: grid;
     place-items: center;
-}
-
-.loc-filter {
 
     div,
     p {
@@ -183,51 +182,57 @@
     height: 90px;
     border-radius: 50%;
     /* background-image: conic-gradient(orange 0%, orange 64%, blue 64%, blue 81%, black 81%, black 100%); */
+    /* background-color: conic-gradient(rgb(54 102 244) 0%, rgb(54 109 244) 50%, rgb(192 238 255) 50%, rgb(186 249 255) 100%); */
 }
 
 .loc-stats-rate,
 .loc-stats-updates {
-
     display: grid;
 
     h4 {
         margin: 0;
+        /* margin-block-start: 0; */
         font-size: 0.9rem;
         font-weight: 500;
         letter-spacing: 0.6px;
     }
-
+    
     .pie {
         justify-self: center;
     }
-
+    
     .legend {
         justify-self: end;
     }
 }
 
-.loc-stats ul {
-    list-style-type: none;
-    letter-spacing: 0.5px;
-    text-transform: capitalize;
-    font-size: 0.8rem;
-}
-
-.loc-stats .pie-label {
-    display: inline-block;
-    background-color: black;
-    width: 1em;
-    height: 1em;
-    border-radius: 100vh;
-    font-size: 0.8rem;
-    margin-inline-end: 0.5em;
-}
-
-.form-search {
-    button {
-        font-size: 1rem;
-        /* margin-inline: 7px; */
-
+.loc-stats {
+    
+    .statistics {
+        margin-block-start: 0;
     }
-    align-self: end;
+
+    ul {
+        list-style-type: none;
+        letter-spacing: 0.5px;
+        text-transform: capitalize;
+        font-size: 0.8rem;
+    }
+
+    .pie-label {
+        display: inline-block;
+        background-color: var(--color-basic);
+        width: 1em;
+        height: 1em;
+        border-radius: 100vh;
+        font-size: 0.8rem;
+        margin-inline-end: 0.5em;
+    }
+}
+
+.btn-theme {
+    align-self: start;
+    font-size: 1.2rem;
+    color: var(--color-basic);
+
 }
