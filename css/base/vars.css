@@ -35,7 +35,7 @@ body {
 }
 
 body.alt-theme {
-    --bg1: rgb(119, 188, 188);
+    --bg1: rgb(215, 150, 234);
     --bg2: rgb(55, 55, 55);
     --bg2-light: rgb(69, 69, 69);
     --bg3: rgb(222, 168, 222);

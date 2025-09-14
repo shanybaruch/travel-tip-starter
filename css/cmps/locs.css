@@ -11,15 +11,13 @@
         font-size: 1.3rem;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         color: var(--color2);
-        /* border: 2px solid white; */
-        background-color: #ffffff;
-        /* box-shadow: 0 0 5px white; */
-        /* background-color: var(--color2); */
+        /* border: 2px solid var(--bg2-light); */
+        background-color: var(--bg2-light);
+        /* box-shadow: 0 0 10px var(--bg2-light); */
         width: max-content;
         margin: 1em auto;
         border-radius: 0.8em;
         padding: 2px 10px;
-
     }
 }
 
@@ -30,30 +28,42 @@
     
     li {
         padding-bottom: 1.4em;
+        border-bottom: 2px solid var(--bg2-light);
 
-        div {
-            display: flex;
-            justify-content: space-between;
+        .loc-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+
+            .more-details {
+                display: grid;
+                justify-content: space-between;
+                /* grid-template-rows: 1fr 1fr; */
+
+                .loc-distance {
+                    margin-bottom: 0;
+                    font-size: 0.9rem;
+                }
+            }
+
+            
+            .loc-btns {
+                align-self: end;
+                
+                button {
+                    padding: 0;
+                }
+
+            }
         }
-
-        /* display: grid;
-        grid-template-columns: 5fr 3fr; */
-
-
-        /* border-bottom: 1px solid var(--color2); */
-
+        
         h4 {
             display: flex;
             justify-content: space-between;
-            margin-block: 0.5em;
+            margin-block: 0.8em;
 
             span {
                 margin-inline-end: 5px;
             }
-        }
-
-        .loc-btns {
-            align-self: center;
         }
 
         .muted {
@@ -134,7 +144,7 @@
     background-color: var(--bg2-light);
     font-size: 1rem;
     padding-top: 1.1em;
-    
+
     display: grid;
     place-items: center;
 
@@ -196,21 +206,17 @@
         font-weight: 500;
         letter-spacing: 0.6px;
     }
-    
+
     .pie {
         justify-self: center;
     }
-    
+
     .legend {
         justify-self: end;
     }
 }
 
 .loc-stats {
-    
-    .statistics {
-        margin-block-start: 0;
-    }
 
     ul {
         list-style-type: none;

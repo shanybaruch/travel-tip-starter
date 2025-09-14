@@ -61,7 +61,7 @@ button:hover {
 }
 
 dialog {
-    background-color: pink;
+    background-color: var(--bg2);
     position: absolute;
     top: -20vh;
     padding: 1.5rem;

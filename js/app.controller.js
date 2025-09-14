@@ -65,7 +65,7 @@ function renderLocs(locs) {
                 <span>${loc.name}</span>
                 <span title="${loc.rate} stars" class="stars">${'★'.repeat(loc.rate)}</span>
             </h4>
-            <div>
+            <div class="loc-info">
                 <div class="more-details">
                     <p class="muted">
                         Created in ${utilService.elapsedTime(loc.createdAt)}
